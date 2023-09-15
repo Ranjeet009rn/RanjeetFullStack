@@ -12,6 +12,8 @@ import com.ranjeet.example.person_info;
 
 public class MainApp
 {
+
+
     static Scanner scan=new Scanner (System.in);
 	static Connection conn;
 	
@@ -104,6 +106,4 @@ public class MainApp
 		 }
 
 	}
-
-
 
