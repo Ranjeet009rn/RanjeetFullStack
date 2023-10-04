@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>
+		TodoApp
+	</title>
+	<style>
+		.main {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Welcome To SpringBoot</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<div class="main">
+					<th>Id</th>
+					<th>name</th>
+					<th>salary</th>
+				</div>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item:${employees}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.salary}"></td>
+
+			</tr>
+		</tbody>
+	</table>
+	<form action="/employee/save" method="POST" th:object="${employee}" >
+	<input type="text" placeholder="id" th:field="*{id}" />
+	<input type="text" placeholder="name" th:field="*{name}" />
+	<input type="text" placeholder="Salary" th:field="*{salary}" />
+	<button >Submit</button>
+</body>
+
+</html>
