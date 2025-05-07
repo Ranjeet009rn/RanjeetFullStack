@@ -1,50 +1,19 @@
-// src/App.js
 import React, { useState } from "react";
-import "./App.css";
+import EmployeeList from "./Components/EmployeeList";
+import AddEmployeeForm from "./Components/AddEmployeeForm";
 
-function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const App = () => {
+  const [refresh, setRefresh] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    alert("Logged in (not really)");
-  };
+  const reload = () => setRefresh(prev => !prev); // Triggers re-render
 
   return (
-    <div className="container mt-5" style={{ maxWidth: "400px" }}>
-      <h2 className="text-center mb-4">Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary w-100">
-          Login
-        </button>
-      </form>
+    <div style={{ padding: "20px" }}>
+      <h1>Employee Manager</h1>
+      <AddEmployeeForm onEmployeeAdded={reload} />
+      <EmployeeList key={refresh} />
     </div>
   );
-}
+};
 
 export default App;
